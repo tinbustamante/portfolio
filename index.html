@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Christine Bustamante — Marketing Automation Specialist</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy: #0D1B2A;
+    --navy-mid: #1A3350;
+    --accent: #2ADFB0;
+    --accent-dim: #1aab87;
+    --white: #FFFFFF;
+    --off-white: #F5F7FA;
+    --muted: #6B7A8D;
+    --border: #E2E8F0;
+    --card-bg: #FFFFFF;
+    --tag-bg: #EEF8F5;
+    --tag-text: #0F6E56;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--off-white);
+    color: var(--navy);
+    line-height: 1.6;
+  }
+
+  /* NAV */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(13, 27, 42, 0.97);
+    backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2.5rem;
+    height: 60px;
+  }
+  .nav-logo {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 1.1rem;
+    color: var(--accent);
+    letter-spacing: -0.02em;
+  }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    color: rgba(255,255,255,0.7);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: color 0.2s;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .nav-links a:hover { color: var(--accent); }
+
+  /* HERO */
+  .hero {
+    background: var(--navy);
+    padding: 6rem 2.5rem 5rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -80px; right: -80px;
+    width: 420px; height: 420px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(42,223,176,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-inner { max-width: 860px; margin: 0 auto; }
+  .hero-eyebrow {
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1.2rem;
+  }
+  .hero h1 {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: clamp(2.4rem, 5vw, 3.8rem);
+    color: var(--white);
+    line-height: 1.08;
+    letter-spacing: -0.03em;
+    margin-bottom: 1.4rem;
+  }
+  .hero h1 span { color: var(--accent); }
+  .hero-sub {
+    font-size: 1.05rem;
+    color: rgba(255,255,255,0.6);
+    max-width: 540px;
+    margin-bottom: 2.4rem;
+    line-height: 1.7;
+  }
+  .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: var(--accent);
+    color: var(--navy);
+    font-weight: 600;
+    font-size: 0.9rem;
+    padding: 0.7rem 1.5rem;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .btn-primary:hover { background: var(--accent-dim); transform: translateY(-1px); }
+  .btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    border: 1px solid rgba(255,255,255,0.25);
+    color: rgba(255,255,255,0.8);
+    font-weight: 500;
+    font-size: 0.9rem;
+    padding: 0.7rem 1.5rem;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* STATS STRIP */
+  .stats-strip {
+    background: var(--navy-mid);
+    padding: 1.8rem 2.5rem;
+    display: flex;
+    justify-content: center;
+    gap: 4rem;
+    flex-wrap: wrap;
+  }
+  .stat { text-align: center; }
+  .stat-num {
+    font-family: 'Syne', sans-serif;
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--accent);
+    display: block;
+  }
+  .stat-label {
+    font-size: 0.78rem;
+    color: rgba(255,255,255,0.55);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-top: 0.2rem;
+  }
+
+  /* SECTIONS */
+  section { padding: 5rem 2.5rem; }
+  .section-inner { max-width: 900px; margin: 0 auto; }
+  .section-eyebrow {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--accent-dim);
+    margin-bottom: 0.6rem;
+  }
+  .section-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.9rem;
+    font-weight: 800;
+    color: var(--navy);
+    letter-spacing: -0.02em;
+    margin-bottom: 2.5rem;
+  }
+  .divider {
+    width: 40px;
+    height: 3px;
+    background: var(--accent);
+    border-radius: 2px;
+    margin: 0.8rem 0 2.5rem;
+  }
+
+  /* TOOLS GRID */
+  .tools-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+  .tool-group {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.2rem 1.4rem;
+  }
+  .tool-group-label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.8rem;
+    padding-bottom: 0.6rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .tool-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+  .tag {
+    background: var(--tag-bg);
+    color: var(--tag-text);
+    font-size: 0.78rem;
+    font-weight: 500;
+    padding: 0.22rem 0.7rem;
+    border-radius: 100px;
+  }
+
+  /* PROJECTS */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.4rem;
+  }
+  .project-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.6rem;
+    transition: box-shadow 0.2s, transform 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+  .project-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--accent);
+    border-radius: 12px 12px 0 0;
+  }
+  .project-card:hover { transform: translateY(-3px); box-shadow: 0 12px 32px rgba(13,27,42,0.09); }
+  .project-platform {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent-dim);
+    margin-bottom: 0.6rem;
+  }
+  .project-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 0.7rem;
+    line-height: 1.3;
+  }
+  .project-desc {
+    font-size: 0.88rem;
+    color: var(--muted);
+    line-height: 1.65;
+    margin-bottom: 1.1rem;
+  }
+  .project-results {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+  .result-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.82rem;
+    color: var(--navy);
+    font-weight: 500;
+  }
+  .result-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    flex-shrink: 0;
+  }
+
+  /* EXPERIENCE TIMELINE */
+  .timeline { display: flex; flex-direction: column; gap: 0; }
+  .timeline-item {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 0 2rem;
+    padding-bottom: 2.5rem;
+    position: relative;
+  }
+  .timeline-item:last-child { padding-bottom: 0; }
+  .timeline-left { text-align: right; padding-top: 0.2rem; }
+  .timeline-dates {
+    font-size: 0.78rem;
+    color: var(--muted);
+    font-weight: 500;
+    line-height: 1.5;
+  }
+  .timeline-right {
+    border-left: 2px solid var(--border);
+    padding-left: 2rem;
+    padding-bottom: 2rem;
+    position: relative;
+  }
+  .timeline-item:last-child .timeline-right { border-left-color: transparent; }
+  .timeline-dot {
+    position: absolute;
+    left: -7px;
+    top: 4px;
+    width: 12px; height: 12px;
+    border-radius: 50%;
+    background: var(--accent);
+    border: 2px solid var(--off-white);
+  }
+  .timeline-role {
+    font-family: 'Syne', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 0.15rem;
+  }
+  .timeline-company {
+    font-size: 0.85rem;
+    color: var(--accent-dim);
+    font-weight: 600;
+    margin-bottom: 0.7rem;
+  }
+  .timeline-bullets { list-style: none; display: flex; flex-direction: column; gap: 0.35rem; }
+  .timeline-bullets li {
+    font-size: 0.86rem;
+    color: var(--muted);
+    padding-left: 1rem;
+    position: relative;
+    line-height: 1.6;
+  }
+  .timeline-bullets li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-size: 0.75rem;
+    top: 0.05em;
+  }
+
+  /* SKILLS */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1rem;
+  }
+  .skill-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.3rem 1.4rem;
+  }
+  .skill-card-title {
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+  .skill-bars { display: flex; flex-direction: column; gap: 0.7rem; }
+  .skill-row { display: flex; flex-direction: column; gap: 0.25rem; }
+  .skill-name { font-size: 0.8rem; color: var(--muted); display: flex; justify-content: space-between; }
+  .skill-bar-bg { background: var(--border); border-radius: 100px; height: 5px; }
+  .skill-bar-fill { height: 5px; border-radius: 100px; background: var(--accent); }
+
+  /* CONTACT */
+  .contact-section { background: var(--navy); }
+  .contact-section .section-title { color: var(--white); }
+  .contact-section .section-eyebrow { color: var(--accent); }
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+  .contact-intro {
+    font-size: 1rem;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.75;
+    margin-bottom: 1.8rem;
+  }
+  .contact-detail {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    margin-bottom: 1rem;
+  }
+  .contact-icon {
+    width: 36px; height: 36px;
+    border-radius: 8px;
+    background: rgba(42,223,176,0.12);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .contact-icon svg { width: 16px; height: 16px; stroke: var(--accent); fill: none; stroke-width: 2; }
+  .contact-detail-text { font-size: 0.9rem; color: rgba(255,255,255,0.75); }
+  .contact-form { display: flex; flex-direction: column; gap: 1rem; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .form-field { display: flex; flex-direction: column; gap: 0.4rem; }
+  .form-label { font-size: 0.78rem; font-weight: 600; color: rgba(255,255,255,0.5); letter-spacing: 0.06em; text-transform: uppercase; }
+  .form-input {
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 8px;
+    padding: 0.7rem 1rem;
+    font-size: 0.9rem;
+    color: var(--white);
+    font-family: 'Inter', sans-serif;
+    outline: none;
+    transition: border-color 0.2s;
+    width: 100%;
+  }
+  .form-input:focus { border-color: var(--accent); }
+  .form-input::placeholder { color: rgba(255,255,255,0.3); }
+  textarea.form-input { resize: vertical; min-height: 110px; }
+  .btn-submit {
+    background: var(--accent);
+    color: var(--navy);
+    font-weight: 700;
+    font-size: 0.9rem;
+    padding: 0.8rem 1.8rem;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    align-self: flex-start;
+    transition: background 0.2s, transform 0.15s;
+    font-family: 'Inter', sans-serif;
+  }
+  .btn-submit:hover { background: var(--accent-dim); transform: translateY(-1px); }
+
+  /* FOOTER */
+  footer {
+    background: #07111C;
+    padding: 1.5rem 2.5rem;
+    text-align: center;
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.3);
+  }
+
+  /* AVAILABLE BADGE */
+  .available-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(42,223,176,0.12);
+    border: 1px solid rgba(42,223,176,0.3);
+    border-radius: 100px;
+    padding: 0.3rem 0.9rem;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--accent);
+    margin-bottom: 1.6rem;
+  }
+  .available-dot {
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: var(--accent);
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+
+  @media (max-width: 640px) {
+    .contact-grid { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+    .timeline-item { grid-template-columns: 1fr; }
+    .timeline-left { text-align: left; }
+    nav { padding: 0 1.2rem; }
+    .nav-links { gap: 1rem; }
+    .stats-strip { gap: 2rem; }
+    section { padding: 3.5rem 1.2rem; }
+    .hero { padding: 4rem 1.2rem 3rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">CB.</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#projects">Work</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="about">
+  <div class="hero-inner">
+    <div class="available-badge">
+      <span class="available-dot"></span>
+      Open to opportunities in Sydney
+    </div>
+    <p class="hero-eyebrow">Marketing Automation Specialist</p>
+    <h1>Christine<br><span>Bustamante</span></h1>
+    <p class="hero-sub">7+ years building automated marketing systems that convert — from GoHighLevel funnels and CRM workflows to multi-channel email campaigns. Based in the Philippines, targeting Sydney's digital agency market.</p>
+    <div class="hero-ctas">
+      <a href="#contact" class="btn-primary">Let's work together →</a>
+      <a href="#projects" class="btn-ghost">See my work</a>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-strip">
+  <div class="stat">
+    <span class="stat-num">7+</span>
+    <span class="stat-label">Years experience</span>
+  </div>
+  <div class="stat">
+    <span class="stat-num">30+</span>
+    <span class="stat-label">Tools mastered</span>
+  </div>
+  <div class="stat">
+    <span class="stat-num">3</span>
+    <span class="stat-label">Industries served</span>
+  </div>
+  <div class="stat">
+    <span class="stat-num">100%</span>
+    <span class="stat-label">Remote-ready</span>
+  </div>
+</div>
+
+<!-- TOOLS / STACK -->
+<section style="background: var(--off-white);">
+  <div class="section-inner">
+    <p class="section-eyebrow">Tech Stack</p>
+    <h2 class="section-title">Tools I work with</h2>
+    <div class="divider"></div>
+    <div class="tools-grid">
+      <div class="tool-group">
+        <div class="tool-group-label">Automation & CRM</div>
+        <div class="tool-tags">
+          <span class="tag">GoHighLevel</span>
+          <span class="tag">ActiveCampaign</span>
+          <span class="tag">Keap</span>
+          <span class="tag">Zapier</span>
+          <span class="tag">Ontraport</span>
+          <span class="tag">Close.io</span>
+        </div>
+      </div>
+      <div class="tool-group">
+        <div class="tool-group-label">Funnels & Pages</div>
+        <div class="tool-tags">
+          <span class="tag">ClickFunnels</span>
+          <span class="tag">Kajabi</span>
+          <span class="tag">Simplero</span>
+          <span class="tag">ConvertKit</span>
+          <span class="tag">WordPress</span>
+        </div>
+      </div>
+      <div class="tool-group">
+        <div class="tool-group-label">Email & Messaging</div>
+        <div class="tool-tags">
+          <span class="tag">MailChimp</span>
+          <span class="tag">ManyChat</span>
+          <span class="tag">Meta Business</span>
+          <span class="tag">Calendly</span>
+        </div>
+      </div>
+      <div class="tool-group">
+        <div class="tool-group-label">Analytics & Ads</div>
+        <div class="tool-tags">
+          <span class="tag">Google Analytics</span>
+          <span class="tag">Google Tag Manager</span>
+          <span class="tag">Google Ads</span>
+          <span class="tag">SEMrush</span>
+        </div>
+      </div>
+      <div class="tool-group">
+        <div class="tool-group-label">Design & Dev</div>
+        <div class="tool-tags">
+          <span class="tag">HTML / CSS</span>
+          <span class="tag">JavaScript</span>
+          <span class="tag">Figma</span>
+          <span class="tag">Canva</span>
+          <span class="tag">SAP ABAP</span>
+        </div>
+      </div>
+      <div class="tool-group">
+        <div class="tool-group-label">Project & SEO</div>
+        <div class="tool-tags">
+          <span class="tag">Monday.com</span>
+          <span class="tag">Tailwind</span>
+          <span class="tag">Yoast SEO</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section style="background: var(--white);" id="projects">
+  <div class="section-inner">
+    <p class="section-eyebrow">Featured Work</p>
+    <h2 class="section-title">Projects & case studies</h2>
+    <div class="divider"></div>
+    <div class="projects-grid">
+
+      <div class="project-card">
+        <div class="project-platform">GoHighLevel</div>
+        <div class="project-title">Full GHL System Build for Healthcare Practice</div>
+        <div class="project-desc">Built a complete GoHighLevel system for a medical practice — landing page, intake form, CRM pipeline, SMS + email follow-up sequences, and appointment booking automation.</div>
+        <div class="project-results">
+          <div class="result-item"><span class="result-dot"></span>Reduced no-show rate by automating appointment reminders</div>
+          <div class="result-item"><span class="result-dot"></span>7-step onboarding email + SMS workflow</div>
+          <div class="result-item"><span class="result-dot"></span>Full pipeline from lead capture to booked call</div>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-platform">ClickFunnels + ActiveCampaign</div>
+        <div class="project-title">High-Converting Webinar Funnel</div>
+        <div class="project-desc">Designed and built a multi-step webinar registration funnel with automated email sequences for confirmation, reminders, replay, and post-webinar sales follow-up.</div>
+        <div class="project-results">
+          <div class="result-item"><span class="result-dot"></span>A/B tested headline variants to lift opt-in rate</div>
+          <div class="result-item"><span class="result-dot"></span>12-email automation sequence post-registration</div>
+          <div class="result-item"><span class="result-dot"></span>Integrated Zapier for CRM + tracking sync</div>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-platform">Email Marketing</div>
+        <div class="project-title">E-commerce Re-engagement Campaign</div>
+        <div class="project-desc">Built and executed a re-engagement strategy for a dormant email list — including segmentation audit, win-back sequences, and sunset flows for unengaged subscribers.</div>
+        <div class="project-results">
+          <div class="result-item"><span class="result-dot"></span>Segmented 3 audience tiers by engagement score</div>
+          <div class="result-item"><span class="result-dot"></span>5-part win-back sequence with behavioral triggers</div>
+          <div class="result-item"><span class="result-dot"></span>Improved deliverability by cleaning inactive contacts</div>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-platform">CRM / Zapier</div>
+        <div class="project-title">Multi-App Workflow Automation Suite</div>
+        <div class="project-desc">Created a network of Zapier workflows connecting CRM, calendar, email, Slack, and payment tools — eliminating manual data entry and syncing lead data across 6 platforms in real time.</div>
+        <div class="project-results">
+          <div class="result-item"><span class="result-dot"></span>Eliminated manual data entry across 6 platforms</div>
+          <div class="result-item"><span class="result-dot"></span>Real-time lead routing and tagging by source</div>
+          <div class="result-item"><span class="result-dot"></span>Automated Slack alerts for new high-value leads</div>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-platform">GoHighLevel</div>
+        <div class="project-title">B2B Lead Generation Funnel</div>
+        <div class="project-desc">Built a complete B2B lead generation system in GoHighLevel — including lead magnet delivery, nurture sequences, pipeline stages, and rep notification workflows.</div>
+        <div class="project-results">
+          <div class="result-item"><span class="result-dot"></span>Automated lead magnet delivery on opt-in</div>
+          <div class="result-item"><span class="result-dot"></span>CRM pipeline with 6 stages and auto-tagging</div>
+          <div class="result-item"><span class="result-dot"></span>Rep notification + task creation on hot leads</div>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-platform">SEO + WordPress</div>
+        <div class="project-title">SEO Content & Analytics Setup</div>
+        <div class="project-desc">Configured Google Analytics 4, Google Tag Manager, and Yoast SEO for a client's WordPress site — including event tracking, goal setup, and monthly analytics reporting.</div>
+        <div class="project-results">
+          <div class="result-item"><span class="result-dot"></span>GA4 + GTM installed and configured from scratch</div>
+          <div class="result-item"><span class="result-dot"></span>Custom conversion events tracked across funnel</div>
+          <div class="result-item"><span class="result-dot"></span>Monthly performance dashboard built in GA4</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section style="background: var(--off-white);" id="experience">
+  <div class="section-inner">
+    <p class="section-eyebrow">Career</p>
+    <h2 class="section-title">Work experience</h2>
+    <div class="divider"></div>
+    <div class="timeline">
+
+      <div class="timeline-item">
+        <div class="timeline-left">
+          <div class="timeline-dates">Oct 2023<br>— Present</div>
+        </div>
+        <div class="timeline-right">
+          <div class="timeline-dot"></div>
+          <div class="timeline-role">Marketing Automation Specialist</div>
+          <div class="timeline-company">Practice Acceleration</div>
+          <ul class="timeline-bullets">
+            <li>Configures and customizes CRM systems with custom fields, workflows, and automations</li>
+            <li>Builds complex Zapier integrations across the full marketing tech stack</li>
+            <li>Develops and optimizes ClickFunnels pages using HTML, CSS, and JavaScript</li>
+            <li>Designs GHL automations, sequences, and funnels for lead generation</li>
+            <li>Runs A/B tests on pages, headlines, and CTAs to improve conversions</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-left">
+          <div class="timeline-dates">Jan 2022<br>— Oct 2023</div>
+        </div>
+        <div class="timeline-right">
+          <div class="timeline-dot"></div>
+          <div class="timeline-role">Technology Consultant</div>
+          <div class="timeline-company">DXC Technology</div>
+          <ul class="timeline-bullets">
+            <li>SAP ABAP developer delivering enterprise technology solutions to external clients</li>
+            <li>Provided technical leadership in solution design and delivery</li>
+            <li>Worked across cross-functional teams to align technology with business needs</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-left">
+          <div class="timeline-dates">2017<br>— 2021</div>
+        </div>
+        <div class="timeline-right">
+          <div class="timeline-dot"></div>
+          <div class="timeline-role">Automation Expert</div>
+          <div class="timeline-company">Carve Business Management Services</div>
+          <ul class="timeline-bullets">
+            <li>Led end-to-end campaign automation for e-commerce and B2B clients</li>
+            <li>Developed multi-channel workflows across email, social, and paid search</li>
+            <li>Built and managed email marketing strategies with full A/B testing programs</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section style="background: var(--white);">
+  <div class="section-inner">
+    <p class="section-eyebrow">Expertise</p>
+    <h2 class="section-title">Core skills</h2>
+    <div class="divider"></div>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <div class="skill-card-title">Marketing Automation</div>
+        <div class="skill-bars">
+          <div class="skill-row">
+            <div class="skill-name"><span>GoHighLevel</span><span>Expert</span></div>
+            <div class="skill-bar-bg"><div class="skill-bar-fill" style="width:95%"></div></div>
+          </div>
+          <div class="skill-row">
+            <div class="skill-name"><span>ActiveCampaign</span><span>Expert</span></div>
+            <div class="skill-bar-bg"><div class="skill-bar-fill" style="width:92%"></div></div>
+          </div>
+          <div class="skill-row">
+            <div class="skill-name"><span>Zapier</span><span>Expert</span></div>
+            <div class="skill-bar-bg"><div class="skill-bar-fill" style="width:95%"></div></div>
+          </div>
+          <div class="skill-row">
+            <div class="skill-name"><span>Keap / Infusionsoft</span><span>Advanced</span></div>
+            <div class="skill-bar-bg"><div class="skill-bar-fill" style="width:85%"></div></div>
+          </div>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-card-title">Funnel Building</div>
+        <div class="skill-bars">
+          <div class="skill-row">
+            <div class="skill-name"><span>ClickFunnels</span><span>Expert</span></div>
+            <div class="skill-bar-bg"><div class="skill-bar-fill" style="width:95%"></div></div>
+          </div>
+          <div class="skill-row">
+            <div class="skill-name"><span>Kajabi</span><span>Advanced</span></div>
+            <div class="skill-bar-bg"><div class="skill-bar-fill" style="width:85%"></div></div>
+          </div>
+          <div class="skill-row">
+            <div class="skill-name"><span>A/B Testing</span><span>Advanced</span></div>
+            <div class="skill-bar-bg"><div class="skill-bar-fill" style="width:88%"></div></div>
+          </div>
+          <div class="skill-row">
+            <div class="skill-name"><span>Conversion Optimization</span><span>Advanced</span></div>
+            <div class="skill-bar-bg"><div class="skill-bar-fill" style="width:87%"></div></div>
+          </div>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-card-title">Email Marketing</div>
+        <div class="skill-bars">
+          <div class="skill-row">
+            <div class="skill-name"><span>Campaign Strategy</span><span>Expert</span></div>
+            <div class="skill-bar-bg"><div class="skill-bar-fill" style="width:93%"></div></div>
+          </div>
+          <div class="skill-row">
+            <div class="skill-name"><span>List Segmentation</span><span>Expert</span></div>
+            <div class="skill-bar-bg"><div class="skill-bar-fill" style="width:95%"></div></div>
+          </div>
+          <div class="skill-row">
+            <div class="skill-name"><span>Deliverability</span><span>Advanced</span></div>
+            <div class="skill-bar-bg"><div class="skill-bar-fill" style="width:82%"></div></div>
+          </div>
+          <div class="skill-row">
+            <div class="skill-name"><span>Copywriting</span><span>Proficient</span></div>
+            <div class="skill-bar-bg"><div class="skill-bar-fill" style="width:78%"></div></div>
+          </div>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-card-title">Analytics & Technical</div>
+        <div class="skill-bars">
+          <div class="skill-row">
+            <div class="skill-name"><span>Google Analytics</span><span>Advanced</span></div>
+            <div class="skill-bar-bg"><div class="skill-bar-fill" style="width:85%"></div></div>
+          </div>
+          <div class="skill-row">
+            <div class="skill-name"><span>HTML / CSS / JS</span><span>Advanced</span></div>
+            <div class="skill-bar-bg"><div class="skill-bar-fill" style="width:83%"></div></div>
+          </div>
+          <div class="skill-row">
+            <div class="skill-name"><span>SEMrush / SEO</span><span>Proficient</span></div>
+            <div class="skill-bar-bg"><div class="skill-bar-fill" style="width:76%"></div></div>
+          </div>
+          <div class="skill-row">
+            <div class="skill-name"><span>SAP ABAP</span><span>Proficient</span></div>
+            <div class="skill-bar-bg"><div class="skill-bar-fill" style="width:72%"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-section" id="contact">
+  <div class="section-inner">
+    <p class="section-eyebrow">Get in touch</p>
+    <h2 class="section-title">Let's build something great</h2>
+    <div class="contact-grid">
+      <div>
+        <p class="contact-intro">I'm currently exploring Marketing Automation Specialist opportunities in Sydney (remote or relocation). If you're building a marketing team or agency and need someone who can own the full automation stack, I'd love to connect.</p>
+        <div class="contact-detail">
+          <div class="contact-icon">
+            <svg viewBox="0 0 24 24"><path d="M4 4h16v16H4V4zm0 0l8 8 8-8"/></svg>
+          </div>
+          <span class="contact-detail-text">chrispolan12@gmail.com</span>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-icon">
+            <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2A19.79 19.79 0 013.08 4.18 2 2 0 015.09 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L9.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          </div>
+          <span class="contact-detail-text">+63 966 794 9787</span>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-icon">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/></svg>
+          </div>
+          <span class="contact-detail-text">Open to remote roles targeting Sydney, AU</span>
+        </div>
+      </div>
+      <div>
+        <div class="contact-form">
+          <div class="form-row">
+            <div class="form-field">
+              <label class="form-label">Name</label>
+              <input class="form-input" type="text" placeholder="Your name">
+            </div>
+            <div class="form-field">
+              <label class="form-label">Company</label>
+              <input class="form-input" type="text" placeholder="Your company">
+            </div>
+          </div>
+          <div class="form-field">
+            <label class="form-label">Email</label>
+            <input class="form-input" type="email" placeholder="your@email.com">
+          </div>
+          <div class="form-field">
+            <label class="form-label">Message</label>
+            <textarea class="form-input" placeholder="Tell me about the role or project..."></textarea>
+          </div>
+          <button class="btn-submit" onclick="alert('Thanks! Christine will be in touch shortly.')">Send message →</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 Christine Bustamante · Marketing Automation Specialist · Built for Sydney opportunities</p>
+</footer>
+
+</body>
+</html>
